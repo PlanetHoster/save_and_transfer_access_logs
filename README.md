@@ -71,9 +71,13 @@ The script uses environment variables for configuration. Below are the required 
 PH_API_KEY PlanetHoster API Secret Key
 PH_API_USER PlanetHoster API User Key
 HOSTING_USERNAME N0C Hosting Account Username
-S3_ENDPOINT N0C Storage endpoint with port
+S3_ENDPOINT N0C Storage endpoint with port (https://hostname:port)
 S3_REGION N0C Storage region
 ```
+
+The `S3_ENDPOINT` and `S3_REGION` can be found in your N0C Storage settings:
+
+![img_2.png](img_2.png)
 
 ## 🧰 Directory Structure
 
