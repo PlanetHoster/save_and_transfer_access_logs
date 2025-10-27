@@ -12,7 +12,7 @@ This script is meant to be run in a cron job once a day to save and transfer log
 
 ## 🧩 Requirements
 
-[PlanetHoster API credentials (API user and secret)](https://kb.planethoster.com/en/guide/domains-api/)
+[PlanetHoster API credentials (API user and secret)](https://kb.planethoster.com/en/guide/domains-api/) (Server IP must be whitelisted)
 
 PHP ≥ 8.1
 
