@@ -92,6 +92,8 @@ try {
     exit(1);
 }
 
+echo "Fetching access logs from {$startDate} to {$endDate}\n\n";
+
 foreach ($domains as $domain) {
     $is_empty_response = false;
     $accessLogs = [];

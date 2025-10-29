@@ -10,6 +10,14 @@ This script is meant to be run in a cron job once a day to save and transfer log
 - Transforms JSON log data to brute Apache log format.
 - Saves logs to account's N0C Storage.
 
+## ⚠️ Limitations
+
+- Only works with N0C hosting accounts.
+- Requires valid PlanetHoster API credentials.
+- 10 000 log entries limit per timeline.
+    - If your logs exceed this limit, consider running the script multiple times a day with adjusted timeframes.
+    - See the [Adjusting the Timeframe](#adjusting-the-timeframe) section below for details.
+
 ## 🧩 Requirements
 
 [PlanetHoster API credentials (API user and secret)](https://kb.planethoster.com/en/guide/domains-api/)
@@ -79,6 +87,23 @@ The `S3_ENDPOINT` and `S3_REGION` can be found in your N0C Storage settings:
 
 ![img_2.png](img_2.png)
 
+## 📝 Adjusting the Timeframe
+
+By default, the script fetches logs from the previous day. To adjust the timeframe, modify the following lines in
+`index.php`:
+
+```php
+$startDate = (new DateTimeImmutable('yesterday', $utc))->setTime(0, 0, 0)->format('Y-m-d\TH:i:s.000\Z');
+$endDate = (new DateTimeImmutable('today', $utc))->setTime(0, 0, 0)->format('Y-m-d\TH:i:s.000\Z');
+```
+
+For example, to fetch logs from the last 12 hours, you can change it to:
+
+```php
+$startDate = (new DateTimeImmutable('-12 hours', $utc))->format('Y-m-d\TH:i:s.000\Z');
+$endDate = (new DateTimeImmutable('now', $utc))->format('Y-m-d\TH:i:s.000\Z');
+```
+
 ## 🧰 Directory Structure
 
 ```
@@ -101,14 +126,14 @@ Fork the project
 Create a new branch
 
 `git checkout -b feature/new-feature`
-
+`git push origin feature/new-feature`
 Commit your changes
 
 `git commit -m 'Add new feature'`
 
 Push to the branch
 
-`git push origin feature/new-feature`
+`git push origin feature-new-feature`
 
 Open a Pull Request
 
